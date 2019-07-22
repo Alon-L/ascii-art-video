@@ -1,0 +1,42 @@
+{
+  "extends": [
+    "airbnb-base",
+    "plugin:jest/recommended"
+  ],
+  "plugins": [
+    "jest",
+    "promise"
+  ],
+  "rules": {
+    "array-bracket-spacing": "off",
+    "arrow-parens": [
+      "off"
+    ],
+    "consistent-return": "off",
+    "func-names": "off",
+    "comma-dangle": "off",
+    "linebreak-style": "off",
+    "global-require": "off",
+    "generator-star-spacing": "off",
+    "no-console": "off",
+    "no-continue": "off",
+    "no-use-before-define": "off",
+    "no-multi-assign": "off",
+    "no-shadow": "warn",
+    "no-restricted-syntax": "off",
+    "no-param-reassign": "off",
+    "no-plusplus": "off",
+    "no-underscore-dangle": "warn",
+    "promise/param-names": "error",
+    "promise/always-return": "error",
+    "promise/catch-or-return": "warn",
+    "promise/no-native": "off",
+    "quotes": [
+      2,
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ]
+  }
+}

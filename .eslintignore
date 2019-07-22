@@ -1,0 +1,5 @@
+# Built files
+/lib/**
+
+# Package
+package.json

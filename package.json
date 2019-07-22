@@ -1,0 +1,56 @@
+{
+  "name": "node-canvas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --mode development --open",
+    "compile": "webpack --mode production",
+    "clean": "rimraf lib",
+    "test": "jest test",
+    "test:watch": "jest test --watch --notify",
+    "cover": "jest test --coverage",
+    "lint": "eslint src",
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "serve": "nodemon lib/index",
+    "precommit": "npm flow src && npm run lint && npm test",
+    "prepublishOnly": "npm run clean && npm run lint && npm test && npm run build"
+  },
+  "targets": "esnext",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "@types/node": "^12.6.8",
+    "eslint": "^6.0.1",
+    "eslint-config": "^0.3.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.1",
+    "eslint-plugin-jest": "^22.11.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "html-webpack-plugin": "^4.0.0-beta.8",
+    "husky": "^3.0.1",
+    "jest": "^24.8.0",
+    "node-gyp": "^5.0.3",
+    "nodemon": "^1.19.1",
+    "ts-jest": "^24.0.2",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
+    "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit"
+    }
+  },
+  "dependencies": {
+    "@types/pngjs": "^3.3.2",
+    "canvas": "^2.5.0",
+    "jpeg-js": "^0.3.5",
+    "pngjs": "^3.4.0"
+  }
+}
