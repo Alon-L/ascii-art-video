@@ -1,4 +1,3 @@
-import pixelIndex from '../pixels/pixelIndex';
 import Settings from '../Settings';
 import chars from '../chars';
 
@@ -10,6 +9,7 @@ export default class {
   private readonly height: number;
   public pixels: ImageData;
   private settings: Settings;
+  //private chunks: number[][];
 
   constructor(settings: Settings, c: HTMLCanvasElement, image: HTMLImageElement) {
     this.settings = settings;
@@ -18,16 +18,20 @@ export default class {
     this.image = image;
     this.width = this.c.width;
     this.height = this.c.height;
+    //this.chunks = [];
   }
 
   createChunks() {
     const { microWidth: CW, microHeight: CH, resolution } = this.settings;
     let text = '';
-    console.time('Gather chunks');
+    // console.time('Gather chunks');
     for (let ch = 1; ch + CH < this.height; ch += CH * resolution) {
+      /*const line: number[] = [];
+      this.chunks.push(line);*/
       let lineText = '';
       for (let cw = 1; cw < this.width; cw += CW * resolution) {
         // Chunk
+        //line.push((this.width * (ch - 1) + cw - 1) * 4);
         let brightness = 0;
         for (let y = ch; y < ch + CH; y++) {
           for (let x = cw; x < cw + CW; x++) {
@@ -41,16 +45,38 @@ export default class {
       }
       text += lineText + '\n';
     }
-    console.timeEnd('Gather chunks');
-    const canvas = document.createElement('canvas');
+    // console.timeEnd('Gather chunks');
+    /*const canvas = document.createElement('canvas');
     canvas.getContext('2d').putImageData(this.pixels, 0, 0);
-    document.body.appendChild(canvas);
-    console.time('Updating pre');
+    document.body.appendChild(canvas);*/
+    // console.time('Updating pre');
     document.querySelector('pre').innerText = text;
-    console.timeEnd('Updating pre');
+    // console.timeEnd('Updating pre');
   }
 
+  /*drawChunks() {
+    // console.time('Draw chunks');
+    const { microHeight, microWidth } = this.settings;
+    let text = '';
+    for (const chunkLine of this.chunks) {
+      let line = '';
+      for (const chunk of chunkLine) {
+        let brightness = 0;
+        for (let i = chunk; i < microHeight * microWidth + chunk; i++) {
+          const white = this.pixels.data[i];
+          brightness += white;
+        }
+        const brightnessAverage = Math.round(brightness / (microWidth * microHeight));
+        line += chars[brightnessAverage] || ' ';
+      }
+      text += `${line}\n`;
+    }
+    document.querySelector('pre').innerText = text;
+    // console.timeEnd('Draw chunks');
+  }*/
+
   draw() {
+    //console.log(this.ctx.canvas.width, this.ctx.canvas.height);
     this.ctx.drawImage(this.image, 0, 0);
   }
 
@@ -69,7 +95,7 @@ export default class {
   }
 
   updateData() {
-    console.log(this.width, this.height);
+    // console.log(this.width, this.height);
     this.data = this.ctx.getImageData(0, 0, this.width, this.height);
   }
 

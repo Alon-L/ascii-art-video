@@ -6,25 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ASCII Art</title>
     <style>
-        img {
+        canvas, video {
             display: none;
         }
+
         body {
             margin: 0;
             background: black;
         }
+
         pre {
             line-height: 1em;
             font-family: Consolas, monospace;
             color: white;
-            text-align: center
+            text-align: center;
         }
     </style>
 </head>
 <body>
-<img style="display: none;" crossorigin="anonymous" src="../images/dog.jpg" alt="Dog">
 <canvas class="main-canvas"></canvas>
-<canvas class="text-canvas"></canvas>
+<video src="../images/video4.mp4"></video>
 <pre></pre>
 <script src="index.ts" type="text/typescript"></script>
 </body>
