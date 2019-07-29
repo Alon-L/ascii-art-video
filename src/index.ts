@@ -1,18 +1,26 @@
 import Settings from './Settings';
-import Video from './video';
+import Video from './video/Video';
+import Stream from "./video/Stream";
+import { CanvasElement } from './types';
 
 window.onload = () => {
   const settings = new Settings();
 
-  const canvas: HTMLCanvasElement = document.querySelector('canvas.main-canvas');
+  const mainCanvas: CanvasElement = document.querySelector('canvas.main-canvas');
+  const textCanvas: CanvasElement = document.querySelector('canvas.text-canvas');
   const video: HTMLVideoElement = document.querySelector('video');
   const pre: HTMLPreElement = document.querySelector('pre');
 
   console.log(video.videoWidth, video.videoHeight);
   pre.style.fontSize = `${settings.previewHeight}px`;
 
-  canvas.width = video.videoWidth;
-  canvas.height = video.videoHeight;
+  mainCanvas.width = textCanvas.width = video.videoWidth;
+  mainCanvas.height = textCanvas.height = video.videoHeight;
 
-  Video();
+  const stream = new Stream(textCanvas);
+  Video(() => {
+    stream.stopRecording();
+  });
+  stream.stream();
+  stream.record();
 };

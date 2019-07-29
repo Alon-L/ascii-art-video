@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ASCII Art</title>
     <style>
-        canvas, video {
+        .main-canvas, .view {
             display: none;
         }
 
@@ -20,12 +20,14 @@
             font-family: Consolas, monospace;
             color: white;
             text-align: center;
+            background: black;
         }
     </style>
 </head>
 <body>
 <canvas class="main-canvas"></canvas>
-<video src="../images/video4.mp4"></video>
+<canvas class="text-canvas"></canvas>
+<video class="view" src="../images/video4.mp4"></video>
 <pre></pre>
 <script src="index.ts" type="text/typescript"></script>
 </body>
