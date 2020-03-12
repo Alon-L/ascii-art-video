@@ -1,5 +1,5 @@
 import Settings from '../Settings';
-import Chars from '../Chars';
+import Chars from '../chars';
 
 export default class {
   private c: HTMLCanvasElement;
@@ -8,7 +8,7 @@ export default class {
   private readonly width: number;
   private readonly height: number;
   public pixels: ImageData;
-  private settings: Settings;
+  private readonly settings: Settings;
 
   constructor(settings: Settings, c: HTMLCanvasElement, image: HTMLImageElement) {
     this.settings = settings;
@@ -23,8 +23,7 @@ export default class {
     const { microWidth: CW, microHeight: CH, resolution } = this.settings;
     const canvas: HTMLCanvasElement = document.querySelector('canvas.text-canvas');
     const context = canvas.getContext('2d');
-    //context.fillStyle = '#000';
-    //context.rect(0, 0, canvas.width, canvas.height);
+
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.fillStyle = '#fff';
     context.font = '7px Consolas';
@@ -68,10 +67,6 @@ export default class {
   }
 
   updateData() {
-    this.data = this.ctx.getImageData(0, 0, this.width, this.height);
-  }
-
-  set data(pixels: ImageData) {
-    this.pixels = pixels;
+    this.pixels = this.ctx.getImageData(0, 0, this.width, this.height);
   }
 }

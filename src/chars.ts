@@ -1,4 +1,4 @@
-const chars: string[] = [
+export default [
   " ",
   " ",
   " ",
@@ -256,5 +256,3 @@ const chars: string[] = [
   "@",
   "@",
 ];
-
-export default chars;

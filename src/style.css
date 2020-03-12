@@ -1,0 +1,18 @@
+.main-canvas, .text-canvas, .view {
+    display: none;
+}
+
+body {
+    margin: 0;
+    background: black;
+}
+
+pre {
+    line-height: 1em;
+    font-family: Consolas, monospace;
+    color: white;
+    text-align: center;
+    background: black;
+    display: inline-block;
+    overflow: visible;
+}
